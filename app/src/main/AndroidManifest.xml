@@ -21,7 +21,9 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".DownloadImageService"/>
+        <activity android:name=".splash.activity.WebViewActivity"/>
+
+        <service android:name=".Service.DownloadImageService"/>
     </application>
 
 </manifest>

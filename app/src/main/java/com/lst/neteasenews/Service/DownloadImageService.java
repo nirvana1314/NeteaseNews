@@ -1,4 +1,4 @@
-package com.lst.neteasenews;
+package com.lst.neteasenews.Service;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.lst.neteasenews.splash.model.AdDetail;
 import com.lst.neteasenews.splash.model.Ads;
+import com.lst.neteasenews.utils.ImageUtils;
 import com.lst.neteasenews.utils.Md5Helper;
 
 import java.io.File;
@@ -45,7 +46,7 @@ public class DownloadImageService extends IntentService {
     }
 
     private void downloadImage(String imageUrl, String imageName) {
-        if (checkImageExits(imageName)) {
+        if (ImageUtils.checkImageExits(this, imageName)) {
             Log.v("lst", "图片已存在");
             return;
         }
@@ -87,12 +88,5 @@ public class DownloadImageService extends IntentService {
 
     }
 
-    private boolean checkImageExits(String imageName) {
-        String name = this.getCacheDir()+"/.lstCache/"+imageName+".jpg";
-        File file = new File(name);
-        if (file != null && file.exists()) {
-            return true;
-        }
-        return false;
-    }
+
 }
