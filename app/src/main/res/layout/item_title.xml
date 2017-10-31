@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/biz_navigation_tab_news"
+        android:layout_centerInParent="true"
+        android:id="@+id/icon"
+        android:paddingBottom="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="新闻"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/title"
+        android:textSize="12sp"
+        android:layout_below="@id/icon"
+        android:textColor="@color/tab_title_selector"
+        android:layout_marginTop="-20dp"
+        />
+</RelativeLayout>
