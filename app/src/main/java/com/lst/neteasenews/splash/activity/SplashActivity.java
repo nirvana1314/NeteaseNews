@@ -10,11 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.lst.neteasenews.MainActivity;
 import com.lst.neteasenews.R;
 import com.lst.neteasenews.Service.DownloadImageService;
 import com.lst.neteasenews.splash.model.Action;
 import com.lst.neteasenews.splash.model.AdDetail;
 import com.lst.neteasenews.splash.model.Ads;
+import com.lst.neteasenews.splash.view.OnTimeClickListener;
+import com.lst.neteasenews.splash.view.TimeView;
 import com.lst.neteasenews.utils.Const;
 import com.lst.neteasenews.utils.ImageUtils;
 import com.lst.neteasenews.utils.JsonUtils;
@@ -44,6 +47,8 @@ public class SplashActivity extends Activity {
     private Ads ads = null;
     ImageView mTopView;
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,13 @@ public class SplashActivity extends Activity {
 
         mTopView = (ImageView) findViewById(R.id.iv_top);
 
+        TimeView mTimeView = (TimeView) findViewById(R.id.timeview);
+        mTimeView.setListener(new OnTimeClickListener() {
+            @Override
+            public void onClickTime() {
+                goMain();
+            }
+        });
         //  处理接口缓存
         String next_time = SharePreferenceUtils.getString(SplashActivity.this, SharePreferenceUtils.Next_Req_Time);
         String repStr = SharePreferenceUtils.getString(SplashActivity.this, SharePreferenceUtils.AD_RESPONSE_STRING);
@@ -67,8 +79,13 @@ public class SplashActivity extends Activity {
                 showImage(repStr);
             }
         }
+    }
 
-
+    private void goMain() {
+        Intent intent = new Intent();
+        intent.setClass(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void showImage(String repStr) {
@@ -141,6 +158,7 @@ public class SplashActivity extends Activity {
         intent.putExtra(DownloadImageService.ADS_NAME,ads);
         startService(intent);
     }
+
 
 
 }

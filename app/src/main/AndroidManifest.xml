@@ -22,6 +22,7 @@
         </activity>
 
         <activity android:name=".splash.activity.WebViewActivity"/>
+        <activity android:name=".MainActivity"/>
 
         <service android:name=".Service.DownloadImageService"/>
     </application>
